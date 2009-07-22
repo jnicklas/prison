@@ -1,0 +1,4 @@
+pkg
+.DS_Store
+fixture_rails_root/tmp
+fixture_rails_root/log
