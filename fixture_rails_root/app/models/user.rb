@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-  include Prison::Registration
+  include Prison::PasswordAuthentication
 end

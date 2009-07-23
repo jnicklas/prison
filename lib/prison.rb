@@ -4,7 +4,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 module Prison
   VERSION = '0.0.1'
   
-  autoload :Registration, 'prison/registration'
+  autoload :PasswordAuthentication, 'prison/password_authentication'
   
   class << self
     attr_writer :registration_model

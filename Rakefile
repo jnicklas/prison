@@ -12,8 +12,15 @@ Hoe.plugin :cucumberfeatures
 $hoe = Hoe.spec 'prison' do
   self.developer 'Jonas Nicklas', 'jonas.nicklas@gmail.com'
   self.rubyforge_name       = self.name # TODO this is default value
-  # self.extra_deps         = [['activesupport','>= 2.0.2']]
-  self.extra_dev_deps = [['remarkable_rails', '>= 3.1.8']]
+  self.extra_deps         = [
+    ['justinfrench-formtastic', '>= 0.2.1'],
+    ['rails','>= 2.3.2']
+  ]
+  self.extra_dev_deps = [
+    ['remarkable_rails', '>= 3.1.8'],
+    ['bmabey-email_spec', '>= 0.1.3']
+  ]
+  self.version = Prison::VERSION
 end
 
 require 'newgem/tasks'

@@ -7,5 +7,5 @@ Then /^I should see form errors$/ do
 end
 
 Then /^I should see a flash (notice|error)$/ do |kind|
-  response.should have_tag(".flash", :class => kind)
+  response.should have_tag(".flash.#{kind}")
 end

@@ -2,15 +2,15 @@ class Prison::RegistrationsController < ApplicationController
   unloadable
 
   #before_filter :redirect_to_root, :only => [:new, :create], :if => :signed_in?
-  #filter_parameter_logging :password
+  filter_parameter_logging :password
 
   def new
-    @registration = Prison.new_registration_model(params[:user])
+    @registration = Prison.new_registration_model
     render :template => 'registrations/new'
   end
 
   def create
-    @registration = Prison.new_registration_model(params[:user])
+    @registration = Prison.new_registration_model(params[:registration])
     if @registration.save
       ::PrisonMailer.deliver_confirmation(request.host, @registration)
       flash_notice_after_create
@@ -20,8 +20,8 @@ class Prison::RegistrationsController < ApplicationController
     end
   end
 
-  # private
-  # 
+private
+
   def flash_notice_after_create
     flash[:notice] = translate(:deliver_confirmation,
       :scope   => [:clearance, :controllers, :users],

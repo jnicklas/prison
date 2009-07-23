@@ -13,33 +13,33 @@ Feature: Sign up
       And I fill in "Password Confirmation" with "password"
       And I press "Sign Up"
 
-     Then "user@example.com" should receive 1 email
+     Then I should see the header "Sign In"
       And I should see a flash notice
-      And I should see the header "Log In"
+      And "user@example.com" should receive 1 email
 
   Scenario: User tries to create an account with invalid data and fails
     Given I am on the homepage
      When I follow "Sign up"
      Then I should see the header "Sign up"
 
-     When I fill in "Email" with "invalidemail"
+     When I fill in "Email" with "user@example.com"
       And I fill in "Password" with "password"
-      And I fill in "Password Confirmation" with ""
+      And I fill in "Password Confirmation" with "wrong"
       And I press "Sign Up"
 
-     Then "harry@boy.se" should not receive an email
+     Then "user@example.com" should not receive an email
       And I should see form errors
       And I should see the header "Sign up"
-      And the "Email" field should contain "invalidemail"
+      And the "Email" field should contain "user@example.com"
 
      When I fill in "Email" with "user@example.com"
      When I fill in "Password" with "password"
-      And I fill in "Confirm password" with "password"
+      And I fill in "Password Confirmation" with "password"
       And I press "Sign up"
 
-     Then "harry@boy.se" should receive 1 email
+     Then I should see the header "Sign In"
       And I should see a flash notice
-      And I should see the header "Logga in"
+      And "user@example.com" should receive 1 email
 
   Scenario: User confirms his account
     Given I signed up with "email@person.com/password"

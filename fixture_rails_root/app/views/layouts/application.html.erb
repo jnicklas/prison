@@ -13,6 +13,10 @@
       <%= link_to 'Sign up', new_registration_path %>
     </div>
     
+    <%- flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, :class => "flash #{name}" %>
+    <%- end -%>
+    
     <%= yield %>
   </body>
 </html>

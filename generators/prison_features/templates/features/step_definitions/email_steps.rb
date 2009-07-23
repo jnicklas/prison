@@ -1,10 +1,10 @@
 require 'email_spec'
 require 'email_spec/cucumber'
 
-Then /^"([^\"]*)" should receive 1 email$/ do |arg1|
-  pending
+Then %r{^"([^"]*?)" should receive (\d+) emails?$} do |address, n|
+  unread_emails_for(address).size.should == n.to_i 
 end
 
-Then /^"([^\"]*)" should not receive an email$/ do |arg1|
-  pending
+Then %r{^"([^"]*?)" should not receive an email$} do |address|
+  find_email(address).should be_nil
 end
